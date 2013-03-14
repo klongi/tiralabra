@@ -1,0 +1,31 @@
+Viikkoraportti 1
+
+- mitä opin tällä viikolla / tänään?
+
+Ensimmäisellä viikolla valittiin työn aihe. Aiheen valitseminen ei ollut helppoa, sillä vaihtoehtoja oli monia ja hyviä ideoita löytyi
+paljon esimerkiksi vanhoilta kurssisivuilta. Valtsin aiheekseni kuitenkin tieodston pakkaamisen, sillä siinä tavoite tuntui selkeimmältä.
+Ainakin tiedän slekeästi mitä toteuttamani ohjelman pitäisi tehdä. Lisäksi netissä tuntui olevan runsaasti materiaalia aiheesta, ja jo
+wikipedia-artikkelit Huffman -koodauksesta ja Lempel–Ziv–Welch olivat erittäin informatiivisiä. Näistä sai jo hyvän kuvan siitä, minkälaisia
+tietorakenteita tullaan toteuttamaan.
+
+Opin minkälaisia pakkausalgoritmejä on. Huffman on yksinkertainen ja nopea, mutta tuottaa huonoja tuloksia silloin kun symboolinen todennäköisyydet
+ovat lähellä yhtä. 
+
+- mikä jäi epäselväksi? Vastaa tähän kohtaan rehellisesti, koska tarjoan sinulle tarvittaessa apua tämän kohdan perusteella.
+
+Algoritmien toiminnassa on vielä paljon epäselvää, mutta tämä selkeytynee pikkuhiljaa kun toteutus etenee pidemmälle.
+Epäselviä asioita on tässä vaiheessa varmaan enemmän kuin selviä asioita, mutta tuskin mitään sellaista mitä ei saisi
+itse selvitettyä siinä vaiheessa kun totautuksen saa aloitettua.
+
+- miten ohjelma on edistynyt?
+
+Valitsin aiheen vasta päivää ennen palautusta, joten varsinaista koodausta en ole juurikaan ehtinyt vielä aloittaa. Tässä vaiheessa olen keskittynyt
+lukemiseen ja aiheen ymmärtämiseen. Tämä on kuitenkin ollut hyödyllistä ja opettavaista, sillä etukäteen en tiennyt aiheesta mitään.
+Tässä vaiheessa toteutettuna laskuri eri merkkien frekvenssien laskemiselle tiedostosta.
+
+- mitä teen seuraavaksi?
+
+Seuraavaksi on tarkoituksena aloittaa Huffman -koodauksen toteutus käyttäen ensin javan valmiita tietorakenteita.
+Tavoitteena on saada pakkaus vain toimimaan, ja sen jälkeen ryhtyä miettimään tietorakenteiden toteutusta. Toteutetaan
+kuitenkin ensin kokonaisuudessaan Huffman, ennen kuin siirrytään Lempel-Ziv-Welchiin. Kun Huffmanin toiminta on ymmärretty
+selkeämmin, saattaa työn tavoite vielä muuttua

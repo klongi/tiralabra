@@ -1,0 +1,15 @@
+Määrittelydokumentti
+
+Työssä on toteutetaan pakkausohjelma ja sitä vastaava purkuohjelma. Ohjelma saa syötteenään tiedoston, jonka se lukee ja pakkaa
+siten että uusi koko on 40-60% alkuperäisestä. Ohjelma pystyy myös purkamaan tiedoston alkuperäiseen muotoonsa.
+Työ toteutetaan Javalla. Valitsin pakkausohjelman, sillä sen tavoite tuntui selkeimmältä ja helpoimmin lähestyttävältä.
+
+Toteutettavat algoritmit ovat Huffman ja jokin Lempel-Ziv-Welch (LZW) -variantti. Työn tarkoituksena on vertailla
+näitä kahta eri pakkausalgoritmiä ja niiden toimintaa erilaisilla syötteillä. Tavoiteltava aikavaativuus on O(nlogn).
+
+Työ toteutetaan aluksi käyttäen javan valmiita tietorakenteita, mutta kaikki tietorakenteet korvataan lopulta omilla.
+Ensimmäisenä toteutetaan Huffman-koodaus, jossa käytetään puumallia. Lisäksi käytetään prioriteettijonoa.
+
+Lähteet:
+Tässä vaiheessa työtä lähteinä lähinnä wikipedia-artikkelit Huffman ja Lempel-Ziv-Welch
+
