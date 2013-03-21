@@ -1,0 +1,30 @@
+Viikkoraportti 2
+
+- mit‰ opin t‰ll‰ viikolla / t‰n‰‰n?
+
+Luin Cormenin kirjasta Huffmanpuun toteuttamisesta ja Huffmankoodien muodostamisesta. Cormenin kirjan teksti oli
+todella selke‰ ja informatiivinen, ja tunnen ymm‰rt‰neeni nyt miten Huffmankoodit muodostetaan.
+
+- mik‰ j‰i ep‰selv‰ksi? Vastaa t‰h‰n kohtaan rehellisesti, koska tarjoan sinulle tarvittaessa apua t‰m‰n kohdan perusteella.
+
+T‰ll‰ hetkell‰ mik‰‰n ei ole kovinkaan ep‰selv‰‰, ja Cormenin lukemisen myˆt‰ kaikki tuntuu paljon selke‰mm‰lt‰. Ainakin minulla
+on kuva siit‰, mit‰ ryhdyn tekem‰‰n seuraavaksi. Pohdin kyll‰, ett‰ onko mahdollista suorittaa koodaus lukematta tekstitiedostoa
+l‰pi kahteen kertaan. T‰m‰ tuskin voi olla mitenk‰‰n mahdollista, koska frekvenssit on laskettava kaikki ensin.
+
+- miten ohjelma on edistynyt?
+
+Ohjelma on mielest‰ni edistynyt ihan hyvin. Huffmankoodien muodostaminen tuntuu toimivan. Ainakin puusta ja koodeista
+tulee Cormenin kirjan esimerkill‰ samanlaiset kuin kirjassa. Projektista lˆytyy tektitiedosto nimelt‰ Cormen, jossa on
+saman verran kutakin merkki‰ kuin Cormenin esimerkiss‰. Testasin ohjelmaa t‰ll‰ tiedostolla, ja testitulostuksesta
+pystyi n‰kem‰‰n, ett‰ koodien muodostus toimii oikein. Pieni‰ ongelmia t‰ss‰ oli, kuten aina, mutta ei mit‰‰n suurta.
+Loppujen lopuksi t‰m‰ vaihe tuntui melko yksinkertaiselta.
+
+- mit‰ teen seuraavaksi?
+
+Seuraavaksi aion saada pakkaamisen toimimaan kokonaisuudessaan, ja mielell‰‰n myˆs purkamisen. Pakkaus on tarkoitus toteuttaa siten,
+ett‰ nyt jo muodostetusta puusta luetaan koodit johonkin taulukkoon. Sitten pakattava tiedosto luetaan uudestaan l‰pi,
+ja kirjoitetaan uuteen tiedostoon huffmankoodeilla. Kun n‰m‰ ominaisuudet toimivat ryhdyn toteuttamaan tietorakenteet itse.
+P‰‰asiassa toteutettavana on nyt k‰ytett‰v‰ javan PriorityQueue. Haluan saada koko Huffman osuuden toimimaan kokonaisuudessaan
+ennen kuin ryhdyn toteuttamaan mit‰‰n LZW-varianttia. T‰m‰ johtuu siit‰, ett‰ jos jo Huffman osoittautuu liian haastavaksi tai aikaa
+viev‰ksi, pystyn keskittym‰‰n vain sen toteuttamiseen ja hiomiseen kuntoon. Tavoitteena viel‰ kuitenkin on toteuttaa myˆs jokin
+LZW variantti. T‰h‰n menness‰ Huffman ei ole tuntunut kovinkaan vaativalta tai monimutkaiselta, joten tavoite on realistinen.
