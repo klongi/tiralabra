@@ -15,11 +15,10 @@ import static org.junit.Assert.*;
  *
  * @author Krista
  */
-public class FrequencyCalculatorTest {
+public class FileReaderTest {
+    FileReader reader;
     
-    FrequencyCalculator freqCalc;
-    
-    public FrequencyCalculatorTest() {
+    public FileReaderTest() {
     }
     
     @BeforeClass
@@ -32,22 +31,18 @@ public class FrequencyCalculatorTest {
     
     @Before
     public void setUp() {
-        freqCalc = new FrequencyCalculator();
+        reader = new FileReader("cormen.txt");
     }
     
     @After
     public void tearDown() {
     }
-   
     @Test
-    public void rightAMountOfa() {
-        freqCalc.countFrequencies("cormen.txt");
-        assertEquals(45, freqCalc.getFrequencyTable()[97]);
+    public void readsCorrecCharacter() {
+        assertEquals(102, reader.read());
     }
-    
     @Test
-    public void frequency0IfCharacterNotInFile() {
-        freqCalc.countFrequencies("cormen.txt");
-        assertEquals(0, freqCalc.getFrequencyTable()[105]);
+    public void rightAmounAvailable() {
+        assertEquals(100, reader.available());
     }
 }

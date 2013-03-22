@@ -86,6 +86,14 @@ public class Node implements Comparable<Node> {
     }
 
     /**
+     * Setter for the character field of the Node
+     * 
+     * @param character 
+     */
+    public void setCharacter(int character) {
+        this.character = character;
+    }
+    /**
      * Getter for the character
      * @return character
      */

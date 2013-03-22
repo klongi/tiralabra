@@ -1,0 +1,39 @@
+Viikkoraportti 3
+
+- mitä opin tällä viikolla / tänään?
+
+Bittien kanssa työskentely osoittautui jossain määrin haasteelliseksi, ja opin paljon uutta.
+
+
+- mikä jäi epäselväksi? Vastaa tähän kohtaan rehellisesti, koska tarjoan sinulle tarvittaessa apua tämän kohdan perusteella.
+
+Piakkoin on otettava selvää, miten voin testata, että kaksi tiedostoa oikeasti ovat identtiset. Tällä hetkellä olen tutkinut
+tiedostoja vain silmämääräisesti. Ne kyllä näyttävät samalta, mutta en voi olla täysin varma.
+
+En osaa testata kaikki luokkia, esimerkiksi en keksinyt miten kirjoittajaa voisi testata. Lisäksi jouduin muuttamaan muutaman
+metodin, joiden ei tarvitsisi olla public, publiceiksi, jotta pystyin testaamaan niitä erikseen. Pelkän yhden metodin testaaminen,
+joka kutsuu kaikkia näitä muita metodeita ei tuntunut millään tapaa riittävältä. Tein myös muutaman getterin vain testejä varten.
+
+Yritin myös tutustua väliaikaistiedostoihin testaamisen yhteydessä, mutta en saanut testejä ainakaan vielä toimimaan. Tosin
+en ehtinyt vielä lukea aiheesta paljoakaan, mutta päätin keskittyä mieluummin itse ohjelman valmistumiseen.
+
+Isoimmalla tämänhetkisellä testitiedostolla ohjelma antaa vielä errorin, vaikka tiedosto näyttää purkautuvan oikein. En ehtinyt
+vielä katsoa mistä ongelma johtuu, mutta liittynee lopun roskabitteihin. Korjaantunee kuitenkin kunhan ehdin katsoa asiaa.
+
+- miten ohjelma on edistynyt?
+
+Ohjelma on edistynyt kivasti. Kun algoritmin logiikkaan pääsis siälle, on eteneminen ollut melko kivutonta ja palkitsevaa,
+jopa kivaa.
+
+Purkamisen kanssa tosin oli enemmän ongelmia, mutta nekin ratkesivat melko kivuttomasti. Tällä hetkellä näyttää siltä, että ohjelma
+onnistuu pakkaamisen jälkeen myös purkamaan tiedoston alkuperäiseen muotoon. Testaamiseen käyttämässäni isommassa tiedostossa on
+myös erikoismerkkejä, ja ohjelma toimi myös niillä.
+
+- mitä teen seuraavaksi?
+
+Seuraavaksi toteutan itse loputkin työssä tällä hetkellä käytetyt valmiit tietorakenteet. Toteutettavana tällä hetkellä siis
+minimikeko ja jono. Tämän jälkeen ryhdyn tutustumaan erilaisiin LZW variantteihin, ja pyrin aloittamaan sen toteutuksen.
+
+Lisäksi ohjelmaa on ainakin muokattava helpommin ajettavaksi. Tähän kuuluu mm. tiedostojen kysyminen tai tiedostojen syöttäminen
+komentoriviparametreina. Ohjelmaa on myös testattava vieläkin isommilla tiedostoilla, kunhan keksin jostain tarpeeksi ison
+tiedoston tähän tarkoitukseen.

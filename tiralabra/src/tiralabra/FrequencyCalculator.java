@@ -1,23 +1,23 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tiralabra;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
- *
+ * The class calculates the frequencies of all characters in a given text file
+ * 
  * @author Krista
  */
 public class FrequencyCalculator {
     private int[] freqTable;
     
+    /**
+     * The constructor creates a table with size 256.
+     * 
+     * This is because there is 256 different ascii codes.
+     */
     public FrequencyCalculator() {
         freqTable = new int[256];
     }
@@ -28,26 +28,18 @@ public class FrequencyCalculator {
     * @param filename 
     */
     public void countFrequencies(String filename) {
-        File file = new File(filename);
-        FileInputStream fis;
-        try {
-            fis = new FileInputStream(file);
-            int input;
-            while (fis.available() > 0) {
-                input = fis.read();
-                freqTable[input] += 1;
-            }
-            fis.close();
-        } catch (Exception ex) {
-            System.out.println("Tieodton lukeminen ei onnistunut");
+        FileReader reader = new FileReader(filename);
+        while (reader.available() > 0) {
+            freqTable[reader.read()]++;
         }
-
-//        for (int i = 0; i < freqTable.length; i++) {
-//            System.out.println(i);
-//            System.out.println(freqTable[i]);
-//        }
+        reader.close();
     }
     
+    /**
+     * Getter for the frequencies
+     * 
+     * @return table that includes all the frequencies for all characters in the file
+     */
     public int[] getFrequencyTable() {
         return freqTable;
     }

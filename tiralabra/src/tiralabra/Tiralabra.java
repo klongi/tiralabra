@@ -20,13 +20,13 @@ public class Tiralabra {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) {
 //        Scanner scanner = new Scanner(System.in);
 //
 //        System.out.println("Anna pakattavan tieodston nimi");
 //        String fileName = scanner.nextLine();
         FrequencyCalculator freqCalc = new FrequencyCalculator();
-        freqCalc.countFrequencies("cormen.txt");
+        freqCalc.countFrequencies("biggesttest.txt");
 
         PriorityQueue<Node> pq = new PriorityQueue();
         int[] freqTable = freqCalc.getFrequencyTable();
@@ -36,31 +36,14 @@ public class Tiralabra {
             }
         }
         
-       while (pq.size() > 1) {
-           Node smallest1 = pq.remove();
-           Node smallest2 = pq.remove();
-           Node newNode = new Node(smallest1.getFrequency()+smallest2.getFrequency(), -1);
-           newNode.setLeftChild(smallest1);
-           newNode.setRightChild(smallest2);
-           pq.add(newNode);
-       }
+        HuffmanTree tree = new HuffmanTree(pq);
+        Packer packer = new Packer("biggesttest_packed.txt", "biggesttest.txt", tree.getHuffmanCodes());
+        packer.pack();
+        UnPacker unpacker = new UnPacker("biggesttest_packed.txt", "biggesttest_unpacked.txt");
+        unpacker.unpack();
 
-       Node root = pq.remove();
-       System.out.println(root.getFrequency());
-        System.out.println(root.getLeftChild().getFrequency());
-        System.out.println(root.getLeftChild().getCharacter());
-      makeCodes(root, "");     
+      
 
     }
 
-      public static void makeCodes(Node node, String code) {
-        if(node != null) {
-            makeCodes(node.getLeftChild(), code+"0");
-            if (node.getLeftChild() == null && node.getRightChild() == null){
-                System.out.println("koodi: " + code + " freq: " + node.getFrequency() + " merkki: " + node.getCharacter());
-            }
-            makeCodes(node.getRightChild(), code+"1");
-        }
-    }
-    
 }

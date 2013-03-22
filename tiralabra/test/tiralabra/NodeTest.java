@@ -57,4 +57,11 @@ public class NodeTest {
         test.setLeftChild(left);
         assertEquals(10, test.getLeftChild().getFrequency());
     }
+    
+    @Test
+    public void nodesComparedCorrectly() {
+        Node node1 = new Node(10, 99);
+        Node node2 = new Node(5, 100);
+        assertTrue(node1.compareTo(node2) > 0);
+    }
 }
