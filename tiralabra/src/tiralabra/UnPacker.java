@@ -52,7 +52,6 @@ public class UnPacker {
      */
     public void readByte() {
         int input = reader.read();
-        System.out.println(input);
         boolean[] bits = byteToBits(input);
         for (int i = 0; i < bits.length; i++) {
             bitQueue.add(bits[i]);
