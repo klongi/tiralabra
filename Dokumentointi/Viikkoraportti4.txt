@@ -1,0 +1,34 @@
+Viikkoraportti 4
+
+- mitä opin tällä viikolla / tänään?
+
+Eniten aikaa tällä viikolla meni keon toteuttamiseen. Kaikki kekoon liittyvä oli päässyt luentokurssilta jo unohtumaan, joten
+kertaus asiasta oli erittäin opettavaista. Lopulta toteutus hyvän luentomateriaalin avulla oli kohtuullisen helppoa.
+Lisäksi opin mittaamaan ohjelman suoritukseen kuluvaa aikaa ainakin jollain tasolla.
+
+- mikä jäi epäselväksi? Vastaa tähän kohtaan rehellisesti, koska tarjoan sinulle tarvittaessa apua tämän kohdan perusteella.
+
+Suoritustestaus ja testaus tuntuu hankalalta. Testausdokumenttia en ole koskaan aiemmin kirjoittanut, enkä ole aivan varma mitä
+sen pitäisi siältää. Toki varmasti työn valmistuttua pakkaustehon ja pakkausnopeuden testausta erikokoisilla tiedostoilla
+mielellään vertaillen kahdella eri menetelmällä. Mutta tässä vaiheessa suoritustestaus pitäisi olla jo aloitettu ja edennyt,
+mutta en ole varma mitä tällä halutaan. Toki olen testannut ohjelmaani erikokoisilla syötteillä, ja nyt myös sitä minkä
+verran aikaa tähän kuluu. Mielenkiintoista toki nähdä, miten oman keon käyttäminen ja oman jonon käyttäminen valmiiden tietorakenteiden
+sijasta esimerkiksi vaikuttaa suorituskykyyn.
+
+Edelleen en osaa testata kaikki luokkia, kuten kirjoittajaa. 
+
+- miten ohjelma on edistynyt?
+
+Suurin eteneminen tällä viikolla on ollut oman keon toteutus, sekä kuluvan ajan testaaminen. Välissä ollut pääsiäinen ja ulkomaanmatka
+tosin sotkivat työn tekemisen aikataulua melko pahasti, ja jouduin ennen pääsiäistä toteuttamaan kahden viikon edestä vaatimuksia.
+(en tiennyt tuolloin deadlinen siirtymisestä, tosin hommia oli matkalta palattua niin paljon, että en olisi kuitenkaan hirveästi
+ehtinyt tehdä mitään). Tällä viikolla tekoaikaa oli ehkä hieman vähemmän, kuin olisin toivonut, mutta siihen nähden sain mukavasti
+aikaan.
+
+- mitä teen seuraavaksi?
+
+Huffman alkaa olla jo melko pitkällä, joten LZW pitäisi aloittaa jos se aiotaan toteuttaa. Pitää pohtia riittääkö aika toteuttamiseen,
+ja tutustua vielä tarkemmin algoritmin toimintaan. En vielä löytänyt mitään todella hyvää lähdettä, jonka pohjalta rupeaisin
+tekemään hommia. Huffmanin kanssa Cormenin kirja auttoi todella paljon.
+
+purkaminen ei täysin toimi, se on korjattava ensimmäisenä.

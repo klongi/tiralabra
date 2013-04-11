@@ -21,13 +21,25 @@ public class Tiralabra {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.println("Anna pakattavan tieodston nimi");
-//        String fileName = scanner.nextLine();
-        FrequencyCalculator freqCalc = new FrequencyCalculator();
-        freqCalc.countFrequencies("biggesttest.txt");
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Anna pakattavan tiedoston nimi/tiedostopolku:");
+        String fileName = scanner.nextLine();
+        File fileHandle = new File(fileName);
+        while (!fileHandle.exists()) {
+            System.out.println("Tieodstoa ei löydy");
+            System.out.println("Anna pakattavan tiedoston nimi/tiedostopolku:");
+            fileName = scanner.nextLine();
+            fileHandle = new File(fileName);
+        }
+
+        long startTime = System.currentTimeMillis();
+        
+        //Frekvenssien laskeminen
+        FrequencyCalculator freqCalc = new FrequencyCalculator();
+        freqCalc.countFrequencies(fileName);
+
+        // Prioriteettijono
         PriorityQueue<Node> pq = new PriorityQueue();
         int[] freqTable = freqCalc.getFrequencyTable();
         for (int i = 0; i < freqTable.length; i++) {
@@ -35,15 +47,23 @@ public class Tiralabra {
                 pq.add(new Node(freqTable[i], i));
             }
         }
-        
+        //Huffmanpuu
         HuffmanTree tree = new HuffmanTree(pq);
-        Packer packer = new Packer("biggesttest_packed.txt", "biggesttest.txt", tree.getHuffmanCodes());
+        
+        //Varsinainen pakkaus koodien avulla
+        Packer packer = new Packer("packed.txt", fileName, tree.getHuffmanCodes());
         packer.pack();
-        UnPacker unpacker = new UnPacker("biggesttest_packed.txt", "biggesttest_unpacked.txt");
+        
+        long endTime = System.currentTimeMillis();
+        System.out.println("pakkaamiseen kulunut aika millisekunneissa " + (endTime - startTime));
+        
+        //Purkaminen
+        startTime = System.currentTimeMillis();
+        UnPacker unpacker = new UnPacker("packed.txt", "unpacked.txt");
         unpacker.unpack();
-
-      
-
+        endTime = System.currentTimeMillis();
+        System.out.println("Purkamiseen kulunut aika millusekunneissa: " + (endTime - startTime));
+       
     }
 
 }
