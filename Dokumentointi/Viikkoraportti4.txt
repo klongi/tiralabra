@@ -31,4 +31,5 @@ Huffman alkaa olla jo melko pitk‰ll‰, joten LZW pit‰isi aloittaa jos se aiotaan 
 ja tutustua viel‰ tarkemmin algoritmin toimintaan. En viel‰ lˆyt‰nyt mit‰‰n todella hyv‰‰ l‰hdett‰, jonka pohjalta rupeaisin
 tekem‰‰n hommia. Huffmanin kanssa Cormenin kirja auttoi todella paljon.
 
-purkaminen ei t‰ysin toimi, se on korjattava ensimm‰isen‰.
+purkaminen ei t‰ysin toimi, 50MB testaustiedostossa purettuun dokumenttiin tuli loppuun yksi ylim‰‰r‰inen "s". Muuten purkaminen ok.
+Roskabittiongelma viel‰ korjattava.

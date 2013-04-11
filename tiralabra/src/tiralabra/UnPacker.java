@@ -38,7 +38,7 @@ public class UnPacker {
         makeHuffmanTree();
         while (reader.available() > 0) {
             readByte();
-            if (bitQueue.size() >= 256) {
+            while (bitQueue.size() >= 256) {
                 writer.write(findCode());
             }
         }
