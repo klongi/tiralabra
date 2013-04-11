@@ -26,7 +26,7 @@ public class HuffmanTree {
      * 
      * @param pq PriorityQueue
      */
-    public HuffmanTree(PriorityQueue<Node> pq) {
+    public HuffmanTree(MinimumHeap pq) {
         huffmanCodes = new String[256];
         makeTree(pq);
         makeCodes(root, "");
@@ -52,16 +52,16 @@ public class HuffmanTree {
      * 
      * @param pq PriorityQueue
      */
-    private void makeTree(PriorityQueue<Node> pq) {
-        while (pq.size() > 1) {
-            Node smallest1 = pq.remove();
-            Node smallest2 = pq.remove();
+    private void makeTree(MinimumHeap pq) {
+        while (pq.getSize() > 1) {
+            Node smallest1 = pq.deleteMinimum();
+            Node smallest2 = pq.deleteMinimum();
             Node newNode = new Node(smallest1.getFrequency() + smallest2.getFrequency(), -1);
             newNode.setLeftChild(smallest1);
             newNode.setRightChild(smallest2);
-            pq.add(newNode);
+            pq.insert(newNode);
         }
-        root = pq.remove();
+        root = pq.deleteMinimum();
     }
     
     /**

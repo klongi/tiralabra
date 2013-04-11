@@ -40,13 +40,16 @@ public class Tiralabra {
         freqCalc.countFrequencies(fileName);
 
         // Prioriteettijono
-        PriorityQueue<Node> pq = new PriorityQueue();
+        //PriorityQueue<Node> pq = new PriorityQueue();
+        MinimumHeap pq = new MinimumHeap();
         int[] freqTable = freqCalc.getFrequencyTable();
         for (int i = 0; i < freqTable.length; i++) {
             if (freqTable[i] != 0) {
-                pq.add(new Node(freqTable[i], i));
+                pq.insert(new Node(freqTable[i], i));
             }
         }
+        
+        
         //Huffmanpuu
         HuffmanTree tree = new HuffmanTree(pq);
         

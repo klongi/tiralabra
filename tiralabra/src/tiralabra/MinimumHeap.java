@@ -125,4 +125,8 @@ public class MinimumHeap {
             return false;
         }
     }
+    
+    public int getSize() {
+        return heapSize;
+    }
 }

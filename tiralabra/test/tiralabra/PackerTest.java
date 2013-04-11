@@ -20,7 +20,7 @@ import org.junit.Rule;
  */
 public class PackerTest {
     Packer packer;
-    PriorityQueue<Node> pq;
+    MinimumHeap pq;
     HuffmanTree ht;
     
     public PackerTest() {
@@ -39,13 +39,13 @@ public class PackerTest {
     
     @Before
     public void setUp() {
-        pq = new PriorityQueue();
-        pq.add(new Node(45, 97));
-        pq.add(new Node(13, 98));
-        pq.add(new Node(12, 99));
-        pq.add(new Node(16, 100));
-        pq.add(new Node(5, 102));
-        pq.add(new Node(9, 101));
+        pq = new MinimumHeap();
+        pq.insert(new Node(45, 97));
+        pq.insert(new Node(13, 98));
+        pq.insert(new Node(12, 99));
+        pq.insert(new Node(16, 100));
+        pq.insert(new Node(5, 102));
+        pq.insert(new Node(9, 101));
         
         ht = new HuffmanTree(pq);
         packer = new Packer("output", "cormen.txt", ht.getHuffmanCodes());
