@@ -48,8 +48,15 @@ public class UnPackerTest {
     
     @Test
     public void rightAmountOfHuffmanCodes() {
-        assertEquals(6, unpacker.readAmountOfHuffmanCodes());
+        assertEquals(6, unpacker.readAmount());
     }
+    
+    @Test
+    public void rightAmountOfCharacters() {
+        unpacker.readAmount();
+        assertEquals(100, unpacker.readAmount());
+    }
+    
     @Test
     public void rightHuffmanCodeFora() {
         unpacker.readHuffmanCodes();

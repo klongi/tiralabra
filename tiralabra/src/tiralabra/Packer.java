@@ -6,8 +6,6 @@ package tiralabra;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import tiralabra.FileReader;
-import tiralabra.FileWriter;
 
 /**
  *
@@ -15,11 +13,13 @@ import tiralabra.FileWriter;
  */
 public class Packer {
 
+    private HuffmanTree huffmantree;
+    private FrequencyCalculator freqCalc;
     private String[] huffmanCodes;
     private FileReader reader;
     private FileWriter writer;
     private Queue<Integer> bitQueue;
-    private int trashbits;
+    private String inputfile;
 
     /**
      * Creates a new Packer
@@ -28,20 +28,26 @@ public class Packer {
      * @param inputFile Name of the file to be red
      * @param codes  Huffman codes
      */
-    public Packer(String outputFile, String inputFile, String[] codes) {
+    public Packer(String outputFile, String inputFile) {
+        this.inputfile = inputFile;
         this.reader = new FileReader(inputFile);
         this.writer = new FileWriter(outputFile);
-        this.huffmanCodes = codes;
+        this.freqCalc = new FrequencyCalculator();
         bitQueue = new LinkedList<Integer>();
     }
 
     /**
-     * Reads the input file character by character, and adds the corresponding 
-     * Huffman codes to a queue
+     * Does the packing of the input file.
      * 
-     * If there are more than 8 bits in the queue, one byte is written to a file.
+     * First it calculates the frequencies and then constructs the huffman tree.
+     * Then it reads the input file again character by character and writes the corresponding
+     * huffman codes into the output file.
+     * 
      */
     public void pack() {
+        freqCalc.countFrequencies(inputfile);
+        this.huffmantree = makeHuffmanTree();
+        this.huffmanCodes = huffmantree.getHuffmanCodes();
         writeHuffmanCodes();
         while (reader.available() > 0) {
             String code = huffmanCodes[reader.read()];
@@ -57,11 +63,27 @@ public class Packer {
             }
         }
         while (bitQueue.size() > 0) {
-            if (bitQueue.size() < 8) {
-                trashbits = 8 - bitQueue.size();
-            }
             writer.write(makeByte());
         }
+    }
+    
+        
+    /**
+     * Constructs the Huffman tree.
+     * 
+     * First constructs the minimum heap using the frequencies calculated by 
+     * frequencyCalculatorneeded to make the HuffmanTree.
+     * @return 
+     */
+    private HuffmanTree makeHuffmanTree() {
+        MinimumHeap pq = new MinimumHeap();
+        int[] freqTable = freqCalc.getFrequencyTable();
+        for (int i = 0; i < freqTable.length; i++) {
+            if (freqTable[i] != 0) {
+                pq.insert(new Node(freqTable[i], i));
+            }
+        }
+        return new HuffmanTree(pq);
     }
 
     /**
@@ -82,10 +104,23 @@ public class Packer {
         return ret;
     }
     /**
-     * Writes the Huffman codes of used characters in the beginning of the file
+     * Writes the Huffman codes of used characters in the beginning of the file.
+     * 
+     * First the amount of different characters is written so that we can know
+     * how many different codes we need to read when unpacking.
+     * Then the amount of different characters is separated with | 
+     * from the amount of characters in general. This is needed to handle the
+     * extra bits written to the end of file to make full bits when packing.
+     * This is again separated with | from all the Huffman codes used.
+     * Different huffman codes are also spearated with |.
      */
     private void writeHuffmanCodes() {
         String characters = "" + calculateAmountOfCharacters();
+        for (int i = 0; i < characters.length(); i++) {
+            writer.write(characters.charAt(i));    
+        }
+        writer.write('|');
+        characters = "" + freqCalc.getCharactersRed();
         for (int i = 0; i < characters.length(); i++) {
             writer.write(characters.charAt(i));    
         }
@@ -97,11 +132,13 @@ public class Packer {
     }
     
     /**
-     * Makes a String out of the Huffman codes
+     * Makes a String out of the Huffman codes.
+     * 
+     * Different codes are separated with |
      * 
      * @return String with all Huffman codes separated by |
      */
-    public String makeCodeString() {
+    private String makeCodeString() {
         String codes = "";
         for (int i = 0; i < huffmanCodes.length; i++) {
             if (huffmanCodes[i] != null) {
@@ -116,11 +153,11 @@ public class Packer {
     }
 
     /**
-     * Calculates the amount of different characters in the file
+     * Calculates the amount of different characters in the file.
      * 
      * @return amount
      */
-    public int calculateAmountOfCharacters() {
+    private int calculateAmountOfCharacters() {
         int amount = 0;
         for (String s : huffmanCodes){
             if (s != null) {
@@ -129,4 +166,5 @@ public class Packer {
         }
         return amount;
     }
+    
 }

@@ -12,6 +12,7 @@ import java.io.FileInputStream;
  */
 public class FrequencyCalculator {
     private int[] freqTable;
+    private int charactersRed;
     
     /**
      * The constructor creates a table with size 256.
@@ -20,6 +21,7 @@ public class FrequencyCalculator {
      */
     public FrequencyCalculator() {
         freqTable = new int[256];
+        charactersRed = 0;
     }
     
    /**
@@ -31,6 +33,7 @@ public class FrequencyCalculator {
         FileReader reader = new FileReader(filename);
         while (reader.available() > 0) {
             freqTable[reader.read()]++;
+            charactersRed++;
         }
         reader.close();
     }
@@ -42,5 +45,14 @@ public class FrequencyCalculator {
      */
     public int[] getFrequencyTable() {
         return freqTable;
+    }
+    
+    /**
+     * Getter for the amount of characters red.
+     * 
+     * @return amount of characters
+     */
+    public int getCharactersRed() {
+        return charactersRed;
     }
 }

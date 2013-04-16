@@ -17,6 +17,7 @@ public class UnPacker {
     FileReader reader;
     FileWriter writer;
     private Queue<Boolean> bitQueue;
+    private int charactersToRead;
 
     /**
      * Creates a new UnPacker
@@ -32,7 +33,11 @@ public class UnPacker {
     }
     
     /**
-     * Unpacks a packed file
+     * Unpacks a packed file.
+     * 
+     * First it constructs the Huffman tree.
+     * then it reads the packed file finding Huffman codes and writing the 
+     * corresponding characters into the output file.
      */
     public void unpack() {
         makeHuffmanTree();
@@ -42,7 +47,7 @@ public class UnPacker {
                 writer.write(findCode());
             }
         }
-        while (bitQueue.size() > 0) {
+        while (bitQueue.size() > 0 && charactersToRead > 0) {
             writer.write(findCode());
         }
     }
@@ -59,7 +64,7 @@ public class UnPacker {
     }
     
     /**
-     * Constructs a Huffman tree
+     * Constructs a Huffman tree.
      * 
      * It first reads the Huffman codes written in the beginning of a packed file.
      * Then based on the codes the tree is constructed.
@@ -74,7 +79,7 @@ public class UnPacker {
     }
     
     /**
-     * Adds a new node to the Huffman tree
+     * Adds a new node to the Huffman tree.
      * 
      * The Huffman code tells the place in the tree that the node must be added
      * to. Every node added is a leaf node, so whenever needed, additional
@@ -109,8 +114,9 @@ public class UnPacker {
      * stores to codes in to a table in the class HuffmanTree.
      */
     public void readHuffmanCodes() {
-        int amount = readAmountOfHuffmanCodes();
-        for (int i = 0; i < amount; i++) {
+        int amountOfCodes = readAmount();
+        charactersToRead = readAmount();
+        for (int i = 0; i < amountOfCodes; i++) {
             String code = "";
             int character = reader.read();
             int input = reader.read();
@@ -123,16 +129,20 @@ public class UnPacker {
     }
     
     /**
-     * Checks how many different Huffman codes has been used to pack the file
+     * Reads and integer from the beginning of the file.
      * 
      * The first number in the beginning of the file tells how many different Huffman
      * codes has been used to pack the file (=how many different characters the file has).
      * This information is needed, because the Huffman codes are also written in the beginning
      * of the file, and the number must be know to read them.
      * 
+     * The second number in the beginning of the file tells how many different 
+     * characters we need to read. This is needed to handle the extra bits written
+     * to the end of the file when packing.
+     * 
      * @return amount of different Huffman codes
      */
-    public int readAmountOfHuffmanCodes() {
+    public int readAmount() {
         int input = 0;
         String amountOfCodes = "";
         input = reader.read();
@@ -142,6 +152,7 @@ public class UnPacker {
         }
         return Integer.parseInt(amountOfCodes);
     }
+    
     /**
      * Changes one byte into bits which are stored into a boolean table
      * 
@@ -157,7 +168,7 @@ public class UnPacker {
     }
     
      /**
-      * Finds the Huffman code
+      * Finds the Huffman code.
       * 
       * When we read a file bit by bit, the bits can uniquely be changed to Huffman codes
       * by traversing the tree. If the bit red is "0" we travel to the left, otherwise we travel to
@@ -169,6 +180,7 @@ public class UnPacker {
         Node node = tree.getRoot();
         while (true) {
           if (node.getLeftChild() == null && node.getRightChild() == null) {
+              charactersToRead--;
               return node.getCharacter();
           }
           boolean bit = bitQueue.poll();

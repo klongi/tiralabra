@@ -5,10 +5,6 @@
 package tiralabra;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.PriorityQueue;
 import java.util.Scanner;
 
 /**
@@ -32,37 +28,19 @@ public class Tiralabra {
             fileName = scanner.nextLine();
             fileHandle = new File(fileName);
         }
+        
+        String output = fileName.substring(0, fileName.length()-4);
 
+        //Pakkaus
         long startTime = System.currentTimeMillis();
-        
-        //Frekvenssien laskeminen
-        FrequencyCalculator freqCalc = new FrequencyCalculator();
-        freqCalc.countFrequencies(fileName);
-
-        // Prioriteettijono
-        //PriorityQueue<Node> pq = new PriorityQueue();
-        MinimumHeap pq = new MinimumHeap();
-        int[] freqTable = freqCalc.getFrequencyTable();
-        for (int i = 0; i < freqTable.length; i++) {
-            if (freqTable[i] != 0) {
-                pq.insert(new Node(freqTable[i], i));
-            }
-        }
-        
-        
-        //Huffmanpuu
-        HuffmanTree tree = new HuffmanTree(pq);
-        
-        //Varsinainen pakkaus koodien avulla
-        Packer packer = new Packer("packed.txt", fileName, tree.getHuffmanCodes());
+        Packer packer = new Packer(output+"_packed.txt", fileName);
         packer.pack();
-        
         long endTime = System.currentTimeMillis();
         System.out.println("pakkaamiseen kulunut aika millisekunneissa " + (endTime - startTime));
         
         //Purkaminen
         startTime = System.currentTimeMillis();
-        UnPacker unpacker = new UnPacker("packed.txt", "unpacked.txt");
+        UnPacker unpacker = new UnPacker(output+"_packed.txt", output+"_unpacked.txt");
         unpacker.unpack();
         endTime = System.currentTimeMillis();
         System.out.println("Purkamiseen kulunut aika millusekunneissa: " + (endTime - startTime));
