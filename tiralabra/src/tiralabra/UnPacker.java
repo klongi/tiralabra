@@ -1,14 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tiralabra;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import tiralabra.datastructures.HuffmanTree;
+import tiralabra.datastructures.BitQueue;
+import tiralabra.datastructures.Node;
+import tiralabra.io.FileWriter;
+import tiralabra.io.FileReader;
+
 
 /**
- *
+ * Unpacks a given file
+ * 
  * @author Krista
  */
 public class UnPacker {
@@ -16,7 +18,7 @@ public class UnPacker {
     private HuffmanTree tree;
     FileReader reader;
     FileWriter writer;
-    private Queue<Boolean> bitQueue;
+    private BitQueue bitQueue;
     private int charactersToRead;
 
     /**
@@ -29,7 +31,7 @@ public class UnPacker {
         reader = new FileReader(inputFile);
         writer = new FileWriter(outputFile);
         tree = new HuffmanTree(new Node(-1,-1));
-        bitQueue = new LinkedList<Boolean>();
+        bitQueue = new BitQueue();
     }
     
     /**
@@ -43,11 +45,11 @@ public class UnPacker {
         makeHuffmanTree();
         while (reader.available() > 0) {
             readByte();
-            while (bitQueue.size() >= 256) {
+            while (bitQueue.getSize() >= 256) {
                 writer.write(findCode());
             }
         }
-        while (bitQueue.size() > 0 && charactersToRead > 0) {
+        while (bitQueue.getSize() > 0 && charactersToRead > 0) {
             writer.write(findCode());
         }
     }
@@ -183,7 +185,7 @@ public class UnPacker {
               charactersToRead--;
               return node.getCharacter();
           }
-          boolean bit = bitQueue.poll();
+          boolean bit = bitQueue.remove();
           if (!bit) {
              node = node.getLeftChild();
           } else {
@@ -206,7 +208,7 @@ public class UnPacker {
      * 
      * @return the bitQueue
      */
-    public Queue getBitQueue() {
+    public BitQueue getBitQueue() {
         return bitQueue;
     }
 }

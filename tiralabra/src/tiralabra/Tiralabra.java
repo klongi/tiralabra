@@ -33,6 +33,7 @@ public class Tiralabra {
 
         //Pakkaus
         long startTime = System.currentTimeMillis();
+        System.out.println("aloitettu pakkaus "+ output);
         Packer packer = new Packer(output+"_packed.txt", fileName);
         packer.pack();
         long endTime = System.currentTimeMillis();

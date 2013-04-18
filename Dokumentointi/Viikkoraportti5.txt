@@ -1,0 +1,38 @@
+Viikkoraportti 5
+
+- mitä opin tällä viikolla / tänään?
+
+Tällä viikolla tein lähinnä viimeistelyjä ja muokkauksia. Suurin muutos oli alkuun tallentamani merkkien lukumäärä, jolloin lopussa
+olevista ylimääräisistä biteistä ei tarvitse välittää. Tähän voisi luultavasti olla tehokkaampikin tapa, mutta vinkkien googlettelun
+jälkeen tämä tuntui suoraviivaisimmalta ja järkevimmältä.
+
+
+- mikä jäi epäselväksi? Vastaa tähän kohtaan rehellisesti, koska tarjoan sinulle tarvittaessa apua tämän kohdan perusteella.
+
+Tällä viikolla ei tullut uusia ongelmia esiin. Pyrin kuitenkin tulemaan ohjaukseen ensi tiistaina testaukseen liittyvistä asioista
+puhumaan. Ohjausajat ovat vain olleet melko epäkätevät, joten en ole aiemmin onnistunut tulemaan. Ja toisaalta varsinaisen
+ohjelman tekeminen on sujunut ongelmitta.
+
+Olisi myös mukavaa tietää työn arvosteluperusteet paremmin. Nythän ei ole tietoa siitä, miten esimerkiksi aikataulussa pysyminen
+vaikuttaa arvosteluun, tai miten suuri osuus dokumentoinnilla on arvosteluun. Toki aikataulussa pysyminen on aina hyvä, mutta
+monen kohdalla sen osuus arvostelusta voi vaikuttaa paljonkin. Olisi myös hyvä tietää, miten tärkeää testaukseen panostaminen on, tai
+mitä tarkoittaa lause "Dokumenttien merkitys kurssilla on kuitenkin vähäinen". En tiedä onko siihen jokin syy, miksi arvosteluperusteita
+ei ole tarkemmin ilmoitettu.
+
+- miten ohjelma on edistynyt?
+
+Ohjelma on edistynyt hyvin ja Huffman tuntuu olevan valmis. Lisäsin pakatun tiedoston alkuun nyt tieodton sisältämän merkkien määrän,
+mikä helpottaa purkamista. Nyt tiedetään montako koodia pakatusta tiedostosta tulisi löytyä, joten ylimääräisten täytebittien kanssa
+ei tule enää ongelmaa. Ohjelma ei nyt kaadu millään kokeilemallani tiedostolla, ja kaikissa tapauksissa näyttää siltä, että
+pakkaaminen ja purkaminen toimii oikein.
+
+Lisäksi tein ohjelmasta helpommin ajettavan, niin että ohjelma kysyy pakattavan tiedoston nimen. Muutin myös rakennetta hieman, niin
+että packer luokka suorittaa nyt oikeasti kaiken pakaamisen ja unpacker kaiken purkamisen. Aiemminhan muodostin keon yms. vain mainissa.
+
+
+- mitä teen seuraavaksi?
+
+Pyrin luultavasti aloittamaan LZW:n toteutuksen. Vaikka kurssia on jäljellä enää runsas viikko, niin toteuttaminen on luultavatsi
+edelleen mahdollista. Vaatii kuitenkin vielä enemmän tutustumista algoritmiin ja jonkin hyvän lähteen löytämistä. Toisaalta
+Huffmanin toteutukseen on toki kulunut jo aikaa, ja vaatisi paljon työtä viimeiseltä viikolta vielä toteuttaa LZW tähän päälle.
+Huffmanin optimoinnin miettiminen ei myöskään ole siis huono vaihtoehto. Perehdyn asiaan, ja tulen pajaan ensi viikolla.

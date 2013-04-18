@@ -4,6 +4,7 @@
  */
 package tiralabra;
 
+import tiralabra.datastructures.Node;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -98,7 +99,7 @@ public class UnPackerTest {
     @Test
     public void bitsAddedToQueue() {
         unpacker.readByte();;
-        assertEquals(8, unpacker.getBitQueue().size());
+        assertEquals(8, unpacker.getBitQueue().getSize());
     }
     
 }

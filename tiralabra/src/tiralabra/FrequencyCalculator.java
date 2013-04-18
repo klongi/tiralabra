@@ -1,6 +1,7 @@
 
 package tiralabra;
 
+import tiralabra.io.FileReader;
 import java.io.File;
 import java.io.FileInputStream;
 
