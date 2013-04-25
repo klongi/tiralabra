@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tiralabra;
+package tiralabra.encoding;
 
+import tiralabra.encoding.Packer;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.PriorityQueue;

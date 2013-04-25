@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tiralabra;
+package tiralabra.datastructures;
 
+import tiralabra.datastructures.FrequencyCalculator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,10 +16,11 @@ import static org.junit.Assert.*;
  *
  * @author Krista
  */
-public class FileReaderTest {
-    FileReader reader;
+public class FrequencyCalculatorTest {
     
-    public FileReaderTest() {
+    FrequencyCalculator freqCalc;
+    
+    public FrequencyCalculatorTest() {
     }
     
     @BeforeClass
@@ -31,18 +33,22 @@ public class FileReaderTest {
     
     @Before
     public void setUp() {
-        reader = new FileReader("cormen.txt");
+        freqCalc = new FrequencyCalculator();
     }
     
     @After
     public void tearDown() {
     }
+   
     @Test
-    public void readsCorrecCharacter() {
-        assertEquals(102, reader.read());
+    public void rightAMountOfa() {
+        freqCalc.countFrequencies("cormen.txt");
+        assertEquals(45, freqCalc.getFrequencyTable()[97]);
     }
+    
     @Test
-    public void rightAmounAvailable() {
-        assertEquals(100, reader.available());
+    public void frequency0IfCharacterNotInFile() {
+        freqCalc.countFrequencies("cormen.txt");
+        assertEquals(0, freqCalc.getFrequencyTable()[105]);
     }
 }

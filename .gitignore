@@ -2,6 +2,6 @@
 /tiralabra/build/
 /tiralabra/dist/
 /tiralabra/english.50MB
-/tiralabra/packed.txt
-/tiralabra/unpacked.txt
+/tiralabra/*packed*
+/tiralabra/*unpacked*
 /tiralabra/english*

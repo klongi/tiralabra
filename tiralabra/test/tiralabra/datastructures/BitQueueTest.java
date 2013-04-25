@@ -82,4 +82,12 @@ public class BitQueueTest {
         bitQueue.remove();
         assertEquals(1, bitQueue.getSize());
     }
+      
+    @Test
+    public void queueReturnCorrecLastValueWhenMoreThanOneAdded() {
+        bitQueue.add(true);
+        bitQueue.add(true);
+        bitQueue.add(false);
+        assertTrue(!bitQueue.removeLast());
+    }
 }

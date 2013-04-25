@@ -1,8 +1,15 @@
-package tiralabra;
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tiralabra.encoding;
 
+import tiralabra.datastructures.FrequencyCalculator;
+import tiralabra.datastructures.FrequencyCalculator;
 import tiralabra.datastructures.MinimumHeap;
 import tiralabra.datastructures.HuffmanTree;
 import tiralabra.datastructures.BitQueue;
+import tiralabra.datastructures.FrequencyReader;
 import tiralabra.datastructures.Node;
 import tiralabra.io.FileWriter;
 import tiralabra.io.FileReader;
@@ -13,10 +20,10 @@ import tiralabra.io.FileReader;
  * 
  * @author Krista
  */
-public class Packer {
+public class Packer_withoutCalculating {
 
     private HuffmanTree huffmantree;
-    private FrequencyCalculator freqCalc;
+    private FrequencyReader freqRead;
     private String[] huffmanCodes;
     private FileReader reader;
     private FileWriter writer;
@@ -28,11 +35,11 @@ public class Packer {
    * @param outputFile
    * @param inputFile 
    */
-    public Packer(String outputFile, String inputFile) {
+    public Packer_withoutCalculating(String outputFile, String inputFile) {
         this.inputfile = inputFile;
         this.reader = new FileReader(inputFile);
         this.writer = new FileWriter(outputFile);
-        this.freqCalc = new FrequencyCalculator();
+        this.freqRead = new FrequencyReader();
         bitQueue = new BitQueue();
     }
 
@@ -45,7 +52,7 @@ public class Packer {
      * 
      */
     public void pack() {
-        freqCalc.countFrequencies(inputfile);
+        freqRead.readFrequencies("frequencies_english.txt");
         this.huffmantree = makeHuffmanTree();
         this.huffmanCodes = huffmantree.getHuffmanCodes();
         writeHuffmanCodes();;
@@ -70,10 +77,10 @@ public class Packer {
                 writer.write(makeByte());
             }
         }
-        while (bitQueue.getSize() > 0) {
-            System.out.println(bitQueue.getSize());
-            writer.write(makeByte());
-        }
+        int trashbits = 8 - bitQueue.getSize();
+        //System.out.println(trashbits);
+        writer.write(makeByte());
+        writeStringCaracterByCharacter(""+trashbits);
     }
     
         
@@ -86,11 +93,9 @@ public class Packer {
      */
     private HuffmanTree makeHuffmanTree() {
         MinimumHeap pq = new MinimumHeap();
-        int[] freqTable = freqCalc.getFrequencyTable();
+        int[] freqTable = freqRead.getFrequencyTable();
         for (int i = 0; i < freqTable.length; i++) {
-            if (freqTable[i] != 0) {
                 pq.insert(new Node(freqTable[i], i));
-            }
         }
         return new HuffmanTree(pq);
     }
@@ -126,8 +131,8 @@ public class Packer {
     private void writeHuffmanCodes() {
         writeStringCaracterByCharacter("" + calculateAmountOfCharacters());
         writer.write('|');
-        writeStringCaracterByCharacter("" + freqCalc.getCharactersRed());
-        writer.write('|');
+//        writeStringCaracterByCharacter("" + freqRead.getCharactersRed());
+//        writer.write('|');
         writeStringCaracterByCharacter(makeCodeString());
     }
     

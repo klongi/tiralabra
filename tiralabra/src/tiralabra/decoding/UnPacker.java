@@ -1,5 +1,5 @@
 
-package tiralabra;
+package tiralabra.decoding;
 
 import tiralabra.datastructures.HuffmanTree;
 import tiralabra.datastructures.BitQueue;
@@ -43,17 +43,33 @@ public class UnPacker {
      */
     public void unpack() {
         makeHuffmanTree();
-        while (reader.available() > 0) {
+        while (reader.available() > 1) {
             readByte();
             while (bitQueue.getSize() >= 256) {
                 writer.write(findCode());
             }
         }
-        while (bitQueue.getSize() > 0 && charactersToRead > 0) {
+        
+        int trashbits = reader.read()-48;
+        while (bitQueue.getSize() > trashbits) {
             writer.write(findCode());
         }
     }
     
+    private int findAmountOfTrashBits() {
+        int ret = 0;
+        boolean bit = false;
+        for (int i = 0; i < 8; i++) {
+            if (!bitQueue.isEmpty()) {
+                bit = bitQueue.removeLast();
+            }
+            if (bit) {
+                ret += (1 << (i));
+            }
+        }
+        return ret;
+    }
+
     /**
      * Reads one byte and adds the bits in to a queue
      */
@@ -117,7 +133,7 @@ public class UnPacker {
      */
     public void readHuffmanCodes() {
         int amountOfCodes = readAmount();
-        charactersToRead = readAmount();
+        //charactersToRead = readAmount();
         for (int i = 0; i < amountOfCodes; i++) {
             String code = "";
             int character = reader.read();
@@ -182,7 +198,7 @@ public class UnPacker {
         Node node = tree.getRoot();
         while (true) {
           if (node.getLeftChild() == null && node.getRightChild() == null) {
-              charactersToRead--;
+              //charactersToRead--;
               return node.getCharacter();
           }
           boolean bit = bitQueue.remove();
@@ -195,7 +211,7 @@ public class UnPacker {
     }
 
     /**
-     * Getter for the HuffmanTree
+     * Getter for the HuffmanTree.
      * 
      * @return the root node of the tree
      */

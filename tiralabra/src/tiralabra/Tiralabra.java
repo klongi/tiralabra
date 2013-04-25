@@ -4,8 +4,11 @@
  */
 package tiralabra;
 
+import tiralabra.decoding.UnPacker;
+import tiralabra.encoding.Packer;
 import java.io.File;
 import java.util.Scanner;
+import tiralabra.encoding.Packer_withoutCalculating;
 
 /**
  *
@@ -18,6 +21,7 @@ public class Tiralabra {
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String frecfile = "frequencies_english.txt";
 
         System.out.println("Anna pakattavan tiedoston nimi/tiedostopolku:");
         String fileName = scanner.nextLine();
@@ -28,24 +32,37 @@ public class Tiralabra {
             fileName = scanner.nextLine();
             fileHandle = new File(fileName);
         }
-        
-        String output = fileName.substring(0, fileName.length()-4);
+
+        String output = fileName;
+        String method = "";
+        while (!method.equals("lukemalla") && !method.equals("laskemalla")) {
+            System.out.println("Suoritetaanko pakkaaminen&purkaminen lukemalla vai laskemalla frekvenssit?");
+            method = scanner.nextLine();
+        }
+
+//        if (method.equals("lukemalla")) {
+//            System.out.println("Anna frekvenssitiedoston nimi");
+//            frecfile = scanner.nextLine();
+//        }
 
         //Pakkaus
         long startTime = System.currentTimeMillis();
-        System.out.println("aloitettu pakkaus "+ output);
-        Packer packer = new Packer(output+"_packed.txt", fileName);
+        System.out.println("aloitettu pakkaus " + output);
+        Packer packer = new Packer(output + ".packed", fileName);
+        if (method.equals("lukemalla")) {
+            packer.readFrequencies(frecfile);
+        } else {
+            packer.countFrequencies();
+        }
         packer.pack();
         long endTime = System.currentTimeMillis();
         System.out.println("pakkaamiseen kulunut aika millisekunneissa " + (endTime - startTime));
-        
+
         //Purkaminen
         startTime = System.currentTimeMillis();
-        UnPacker unpacker = new UnPacker(output+"_packed.txt", output+"_unpacked.txt");
+        UnPacker unpacker = new UnPacker(output + ".packed", output + ".unpacked");
         unpacker.unpack();
         endTime = System.currentTimeMillis();
         System.out.println("Purkamiseen kulunut aika millusekunneissa: " + (endTime - startTime));
-       
     }
-
 }

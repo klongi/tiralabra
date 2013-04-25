@@ -13,7 +13,7 @@ public class BitQueue {
     /**
      * The maximum size needed for the queue by packer and unpacker is 512 or less.
      */
-    private static final int MAXSIZE = 1000;
+    private static final int MAXSIZE = 512;
 
     public BitQueue() {
         head = 0;
@@ -44,6 +44,16 @@ public class BitQueue {
         size--;
         if (head == MAXSIZE) {
             head = 0;
+        }
+        return b;
+    }
+    
+    public boolean removeLast() {
+        boolean b = table[tail];
+        tail--;
+        size--;
+        if (tail == -1) {
+            head = MAXSIZE-1;
         }
         return b;
     }

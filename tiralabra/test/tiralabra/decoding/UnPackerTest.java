@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tiralabra;
+package tiralabra.decoding;
 
+import tiralabra.decoding.UnPacker;
 import tiralabra.datastructures.Node;
 import org.junit.After;
 import org.junit.AfterClass;
